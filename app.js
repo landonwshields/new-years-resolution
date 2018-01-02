@@ -25,11 +25,27 @@ app.get('/resolutions', (req, res) => {
     })
 })
 
+app.get('/hopefulPeople', (req, res) => {
+  queries.getPeople()
+    .then(person => {
+        res.render('hopefulPeople', {
+              person: person,
+        })
+    })
+})
+
 app.post('/resolutions', (req, res) => {
   // console.log(req.body);
   queries.addResolution(req.body)
     .then(newGame => {
       res.redirect('/resolutions')
+  })
+})
+
+app.post('/hopefulPeople', (req, res) => {
+  queries.addPerson(req.body)
+    .then(newPerson => {
+      res.redirect('/hopefulPeople')
   })
 })
 
@@ -40,6 +56,16 @@ app.get('/oneResolution/:id', (req, res) => {
     .then(oneResolution => {
       res.render('oneResolution', {
         resolution: oneResolution
+      })
+    })
+})
+
+app.get('/onePerson/:id', (req, res) => {
+  var id = req.params.id
+  queries.getOnePerson(id)
+    .then(onePerson => {
+      res.render('onePerson', {
+        person: onePerson
       })
     })
 })

@@ -1,16 +1,27 @@
 const db = require('./connections')
 
-
 function getResolutions(){
   return db.select('*').from('resolutions')
+}
+
+function getPeople(){
+  return db.select().from('people')
 }
 
 function addResolution(newResolution){
   return db('resolutions').insert(newResolution)
 }
 
+function addPerson(newPerson){
+  return db('people').insert(newPerson)
+}
+
 function getOneResolution(id){
   return db.select().from('resolutions').where('id', id)
+}
+
+function getOnePerson(id){
+  return db.select().from('people').where('id', id)
 }
 
 function update(id, resolution) {
@@ -23,8 +34,11 @@ function deleteResolution(id){
 
 module.exports = {
   getResolutions,
+  getPeople,
   addResolution,
+  addPerson,
   getOneResolution,
+  getOnePerson,
   update,
   deleteResolution
 }

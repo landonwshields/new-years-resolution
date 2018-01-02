@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Resolutions</title>
+    <link rel="stylesheet" href="/main.css">
+  </head>
+  <body>
+    <header>
+      <a href="/" class="header">
+        <h1>New Years Resolutions</h1>
+      </a>
+    </header>
+    <main>
+      <h3>Hopeful People:</h3>
+      <section>
+        {{#each person}}
+        <div class="grow">
+          <a href="/onePerson/{{id}}" class="aTag">
+            <h4>{{person}}</h4>
+          </a>
+        </div>
+        {{/each}}
+      </section>
+      <section>
+        <form action="/hopefulPeople" method="post">
+          <h3>Add Hopeful Person:</h3>
+          <input type="text" name="person" value="" placeholder="New Person" required>
+          <button>Add Hopeful Person</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
