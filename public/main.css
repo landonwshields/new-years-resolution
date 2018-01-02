@@ -1,0 +1,53 @@
+body{
+  background-color: rgb(29, 33, 31);
+  color: gold;
+  font-size: 25px;
+}
+
+.header{
+  color: silver;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#landing{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  font-size: 40px;
+}
+
+.aTag{
+  color: gold;
+  text-decoration: none;
+}
+
+input{
+  background-color: silver;
+  border-radius: 50px;
+}
+
+button{
+  background-color: silver;
+  border-radius: 50px;
+}
+
+#danger{
+  color: red;
+  margin-top: 20px;
+}
+
+.grow:hover
+{
+  -webkit-transform: scale(1.3);
+  -ms-transform: scale(1.3);
+  transform: scale(1.3);
+}

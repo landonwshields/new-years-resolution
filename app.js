@@ -18,7 +18,6 @@ app.get('/', function (req, res) {
 app.get('/resolutions', (req, res) => {
   queries.getResolutions()
     .then(resolution => {
-      console.log(resolution);
         res.render('resolutions', {
               resolution: resolution,
 
@@ -26,8 +25,43 @@ app.get('/resolutions', (req, res) => {
     })
 })
 
+app.post('/resolutions', (req, res) => {
+  // console.log(req.body);
+  queries.addResolution(req.body)
+    .then(newGame => {
+      res.redirect('/resolutions')
+  })
+})
 
+app.get('/oneResolution/:id', (req, res) => {
+  var id = req.params.id
+  // console.log(req.params.id);
+  queries.getOneResolution(id)
+    .then(oneResolution => {
+      res.render('oneResolution', {
+        resolution: oneResolution
+      })
+    })
+})
 
+app.put('/oneResolution/:id', (req, res) => {
+  var id = req.params.id;
+  queries.update(id, req.body)
+    .then(resolution => {
+      queries.getResolutions()
+        .then(resolutions => {
+            res.redirect('/resolutions')
+        })
+      })
+})
+
+app.delete('/oneResolution/:id', function(req, res) {
+  var id = req.params.id
+  queries.deleteResolution(id)
+    .then(deleted => {
+      res.redirect('/resolutions/')
+    })
+})
 
 
 

@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Resolutions</title>
+    <link rel="stylesheet" href="/main.css">
   </head>
   <body>
     <header>
-      <a href="/">
+      <a href="/" class="header">
         <h1>New Years Resolutions</h1>
       </a>
     </header>
@@ -14,7 +15,11 @@
       <h3>Resolutions:</h3>
       <section>
         {{#each resolution}}
+        <div class="grow">
+          <a href="/oneResolution/{{id}}" class="aTag">
             <h4>{{resolution}}</h4>
+          </a>
+        </div>
         {{/each}}
       </section>
       <section>
