@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Resolutions</title>
+  </head>
+  <body>
+    <header>
+      <a href="/">
+        <h1>New Years Resolutions</h1>
+      </a>
+    </header>
+    <main>
+      <h3>Resolutions:</h3>
+      <section>
+        {{#each resolution}}
+            <h4>{{resolution}}</h4>
+        {{/each}}
+      </section>
+      <section>
+        <form action="/resolutions" method="post">
+          <h3>Add Resolution:</h3>
+          <input type="text" name="resolution" value="" placeholder="New Resolution" required>
+          <button>Add Resolution</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

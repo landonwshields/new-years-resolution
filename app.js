@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
+const queries = require('./db/queries');
 const methodOverride = require('method-override');
 
 app.set('view engine', 'hbs')
@@ -14,7 +15,16 @@ app.get('/', function (req, res) {
    res.render('landing')
 })
 
+app.get('/resolutions', (req, res) => {
+  queries.getResolutions()
+    .then(resolution => {
+      console.log(resolution);
+        res.render('resolutions', {
+              resolution: resolution,
 
+        })
+    })
+})
 
 
 
