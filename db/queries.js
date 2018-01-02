@@ -24,6 +24,10 @@ function getOnePerson(id){
   return db.select().from('people').where('id', id)
 }
 
+function getOnePerson(id){
+  return db.select('*').from('people').innerJoin('people_resolutions', 'people_id', 'people.id').innerJoin('resolutions', 'resolutions.id', 'resolutions_id').where('people.id', id)
+}
+
 function update(id, resolution) {
   return db.table('resolutions').update(resolution).where('id', id);
 }

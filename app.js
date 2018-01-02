@@ -49,6 +49,21 @@ app.post('/hopefulPeople', (req, res) => {
   })
 })
 
+app.get('/onePerson/:id', (req, res) => {
+  var id = req.params.id
+  queries.getOnePerson(id)
+    .then(onePerson => {
+      queries.getResolutions()
+        .then(resolutions => {
+          res.render('onePerson', {
+            resolution: resolutions,
+            person: onePerson,
+            people_id: id
+          })
+        })
+    })
+})
+
 app.get('/oneResolution/:id', (req, res) => {
   var id = req.params.id
   // console.log(req.params.id);
@@ -56,16 +71,6 @@ app.get('/oneResolution/:id', (req, res) => {
     .then(oneResolution => {
       res.render('oneResolution', {
         resolution: oneResolution
-      })
-    })
-})
-
-app.get('/onePerson/:id', (req, res) => {
-  var id = req.params.id
-  queries.getOnePerson(id)
-    .then(onePerson => {
-      res.render('onePerson', {
-        person: onePerson
       })
     })
 })
@@ -89,7 +94,17 @@ app.delete('/oneResolution/:id', function(req, res) {
     })
 })
 
-
+app.post('/onePerson/:id', (req, res) => {
+  var people_id = req.params.id
+  var resolutions_id = req.body.resolutions_id
+  var newObject = {'gamers_id': gamers_id,
+   'games_id': games_id
+ }
+  queries.addGamerGame(newObject)
+    .then((addGame) => {
+      res.redirect('/gamers/')
+    })
+})
 
 
 

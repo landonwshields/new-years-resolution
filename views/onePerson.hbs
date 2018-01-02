@@ -20,6 +20,8 @@
               <input type="text" name="person" placeholder="{{person}}" required>
               <button>Update Person</button>
             </form>
+            <h1>This Person's Resolutions:</h1>
+            <h3>{{resolution}}</h3>
             <form action="/onePerson/{{id}}?_method=DELETE" method="post">
               <button id="danger">Delete Person</button>
             </form>
