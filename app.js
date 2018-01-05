@@ -97,14 +97,15 @@ app.delete('/oneResolution/:id', function(req, res) {
 app.post('/onePerson/:id', (req, res) => {
   var people_id = req.params.id
   var resolutions_id = req.body.resolutions_id
-  var newObject = {'gamers_id': gamers_id,
-   'games_id': games_id
+  var newObject = {'people_id': people_id,
+   'resolutions_id': resolutions_id
  }
-  queries.addGamerGame(newObject)
-    .then((addGame) => {
-      res.redirect('/gamers/')
+  queries.addPersonResolution(newObject)
+    .then((newResolution) => {
+      res.redirect('/hopefulPeople')
     })
 })
+
 
 
 

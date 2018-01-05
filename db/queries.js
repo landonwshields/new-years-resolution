@@ -36,6 +36,10 @@ function deleteResolution(id){
   return db('resolutions').where('id', id).del()
 }
 
+function addPersonResolution(newObject) {
+  return db('people_resolutions').insert(newObject)
+}
+
 module.exports = {
   getResolutions,
   getPeople,
@@ -44,5 +48,6 @@ module.exports = {
   getOneResolution,
   getOnePerson,
   update,
-  deleteResolution
+  deleteResolution,
+  addPersonResolution
 }

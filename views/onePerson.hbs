@@ -16,12 +16,14 @@
             <h1>Hopeful Person: </h1>
           {{#each person}}
             <h3>{{person}}</h3>
-            <form method="post" action="/onePerson/{{id}}?_method=PUT">
-              <input type="text" name="person" placeholder="{{person}}" required>
-              <button>Update Person</button>
-            </form>
             <h1>This Person's Resolutions:</h1>
             <h3>{{resolution}}</h3>
+            <form action="/onePerson/{{id}}" method="post">
+              <h3>Add Resolution:</h3>
+              <input type="text" name="resolution" value="" placeholder="New Resolution" required>
+              <button>Add Resolution</button>
+            </form>
+
             <form action="/onePerson/{{id}}?_method=DELETE" method="post">
               <button id="danger">Delete Person</button>
             </form>
